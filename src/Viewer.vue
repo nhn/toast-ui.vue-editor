@@ -4,24 +4,18 @@
 <script>
 import Viewer from 'tui-editor/dist/tui-editor-Viewer';
 
-const editorEvents = [
-    'load',
-    'change',
-    'stateChange',
-    'focus',
-    'blur'
-];
+import editorEvents from './editorEvents';
 
 export default {
     name: 'TuiEditorViewer',
     props: {
         height: {
             type: String,
-            defalut: '300px'
+            default: '300px'
         },
         value: {
             type: String,
-            defalut: ''
+            default: ''
         }
     },
     data() {
