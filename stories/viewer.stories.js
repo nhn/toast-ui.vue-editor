@@ -1,6 +1,7 @@
 
 import Vue from 'vue';
 import {storiesOf} from '@storybook/vue';
+import {html} from 'common-tags';
 import * as dummy from './dummyData';
 
 import 'codemirror/lib/codemirror.css';
@@ -22,12 +23,7 @@ stories.add('demo', () => ({
   components: {
     Viewer
   },
-  template: [
-    '<Viewer',
-    ':value="content"',
-    ':exts="exts"',
-    '/>'
-  ].join(' '),
+  template: `<Viewer :value="content" :exts="exts" />`,
   data() {
     return {
       content: dummy.content,
@@ -53,15 +49,11 @@ stories.add('change value prop', () => ({
   components: {
     Viewer
   },
-  template: [
-    '<div>',
-    '<button @click="changeValue">changeValue</button>',
-    '<Viewer',
-    ':value="content"',
-    ':exts="exts"',
-    '/>',
-    '</div>'
-  ].join(' '),
+  template: html`
+  <div>
+    <button @click="changeValue">changeValue</button>
+    <Viewer :value="content" :exts="exts" />
+  </div>`,
   data() {
     return {
       content: dummy.content,
@@ -92,16 +84,11 @@ stories.add('invoke method', () => ({
   components: {
     Viewer
   },
-  template: [
-    '<div>',
-    '<button @click="setValue">setValue</button>',
-    '<Viewer',
-    'ref="viewer"',
-    ':value="content"',
-    ':exts="exts"',
-    '/>',
-    '</div>'
-  ].join(' '),
+  template: html`
+  <div>
+    <button @click="setValue">setValue</button>
+    <Viewer ref="viewer" :value="content" :exts="exts" />
+  </div>`,
   data() {
     return {
       content: dummy.content,

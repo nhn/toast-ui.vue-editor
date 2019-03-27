@@ -3,6 +3,7 @@ import Vue from 'vue';
 import {storiesOf} from '@storybook/vue';
 import {withKnobs} from '@storybook/addon-knobs';
 import {action} from '@storybook/addon-actions';
+import {html} from 'common-tags';
 import * as dummy from './dummyData';
 
 import 'codemirror/lib/codemirror.css';
@@ -24,14 +25,7 @@ stories.add('Demo', () => ({
   components: {
     Editor
   },
-  template: [
-    '<editor',
-    ':value="content"',
-    ':options="editorOptions"',
-    'previewStyle="tab"',
-    'height="600px"',
-    '/>'
-  ].join(' '),
+  template: `<editor :value="content" :options="editorOptions" previewStyle="tab" height="600px" />`,
   data() {
     return {
       content: dummy.content,
@@ -59,15 +53,8 @@ stories.add('Event', () => ({
   components: {
     Editor
   },
-  template: [
-    '<editor',
-    '@load="onLoad"',
-    '@focus="onFocus"',
-    '@blur="onBlur"',
-    '@change="onChange"',
-    '@stateChange="onStateChange"',
-    '/>'
-  ].join(' '),
+  template: html`
+  <editor @load="onLoad" @focus="onFocus" @blur="onBlur" @change="onChange" @stateChange="onStateChange" />`,
   methods: {
     onLoad: action('onLoad'),
     onFocus: action('onFocus'),
@@ -81,20 +68,13 @@ stories.add('change props', () => ({
   components: {
     Editor
   },
-  template: [
-    '<div>',
-    '<editor',
-    ':value="content"',
-    ':options="editorOptions"',
-    ':previewStyle="previewStyle"',
-    ':mode="mode"',
-    'height="300px"',
-    '/>',
-    '<button @click="changeValue">changeValue</button>',
-    '<button @click="changePreviewStyle">changePreviewStyle</button>',
-    '<button @click="changeMode">changeMode</button>',
-    '</div>'
-  ].join(' '),
+  template: html`
+  <div>
+    <editor :value="content" :options="editorOptions" :previewStyle="previewStyle" :mode="mode" height="300px" />
+    <button @click="changeValue">changeValue</button>
+    <button @click="changePreviewStyle">changePreviewStyle</button>
+    <button @click="changeMode">changeMode</button>
+  </div>`,
   data() {
     return {
       content: dummy.content,
@@ -135,15 +115,11 @@ stories.add('v-model', () => ({
   components: {
     Editor
   },
-  template: [
-    '<div>',
-    '<editor',
-    'v-model="content"',
-    'height="300px"',
-    '/>',
-    '<p style="white-space: pre-line" >Editor Input Data\n{{ content }}</p>',
-    '</div>'
-  ].join(' '),
+  template: html`
+  <div>
+    <editor v-model="content" height="300px" />
+    <p style="white-space: pre-line" >Editor Input Data\n{{ content }}</p>
+  </div>`,
   data() {
     return {
       content: ''
@@ -155,19 +131,14 @@ stories.add('invoke method', () => ({
   components: {
     Editor
   },
-  template: [
-    '<div>',
-    '<editor',
-    'ref="editorRef"',
-    ':value="content"',
-    'height="300px"',
-    '/>',
-    '<button @click="getHtml">getHtml</button>',
-    '<button @click="scrollTop">scrollTop(100)</button>',
-    '<button @click="reset">reset</button>',
-    '<p>getHtml result : {{ html }}</p>',
-    '</div>'
-  ].join(' '),
+  template: html`
+  <div>
+    <editor ref="editorRef" :value="content" height="300px" />
+    <button @click="getHtml">getHtml</button>
+    <button @click="scrollTop">scrollTop(100)</button>
+    <button @click="reset">reset</button>
+    <p>getHtml result : {{ html }}</p>
+  </div>`,
   data() {
     return {
       content: dummy.content,
