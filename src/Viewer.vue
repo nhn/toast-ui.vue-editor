@@ -1,55 +1,67 @@
 <template>
-    <div ref="tuiEditorViewer"></div>
+  <div ref="tuiEditorViewer"></div>
 </template>
 <script>
-import Viewer from 'tui-editor/dist/tui-editor-Viewer';
+import Editor from 'tui-editor';
 
 import editorEvents from './editorEvents';
 
 export default {
-    name: 'TuiEditorViewer',
-    props: {
-        height: {
-            type: String,
-            default: '300px'
-        },
-        value: {
-            type: String,
-            default: ''
-        }
+  name: 'TuiEditorViewer',
+  props: {
+    height: {
+      type: String
     },
-    data() {
-        return {
-            editor: null
-        };
+    value: {
+      type: String
     },
-    watch: {
-        value(val, preVal) {
-            if (val !== preVal) {
-                this.editor.setValue(val);
-            }
-        }
-    },
-    mounted() {
-        const eventOption = {};
-        editorEvents.forEach(event => {
-            eventOption[event] = (...args) => {
-                this.$emit(event, ...args);
-            };
-        });
-
-        this.editor = new Viewer({
-            el: this.$refs.tuiEditorViewer,
-            events: eventOption,
-            initialValue: this.value,
-            height: this.height
-        });
-    },
-    destroyed() {
-        editorEvents.forEach(event => {
-            this.editor.off(event);
-        });
-        this.editor.remove();
+    exts: {
+      type: Array
     }
+  },
+  data() {
+    return {
+      editor: null
+    };
+  },
+  watch: {
+    value(val, preVal) {
+      if (val !== preVal) {
+        this.editor.setValue(val);
+      }
+    }
+  },
+  mounted() {
+    const eventOption = {};
+    editorEvents.forEach(event => {
+      eventOption[event] = (...args) => {
+        this.$emit(event, ...args);
+      };
+    });
+
+    this.editor = Editor.factory({
+      el: this.$refs.tuiEditorViewer,
+      events: eventOption,
+      initialValue: this.value,
+      height: this.height,
+      viewer: true
+    });
+  },
+  destroyed() {
+    editorEvents.forEach(event => {
+      this.editor.off(event);
+    });
+    this.editor.remove();
+  },
+  methods: {
+    invoke(methodName, ...args) {
+      let result = null;
+      if (this.editor[methodName]) {
+        result = this.editor[methodName](...args);
+      }
+
+      return result;
+    }
+  }
 };
 </script>
