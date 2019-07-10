@@ -3,5 +3,6 @@ export default [
   'change',
   'stateChange',
   'focus',
-  'blur'
+  'blur',
+  'paste'
 ];

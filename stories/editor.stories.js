@@ -53,13 +53,14 @@ stories.add('Event', () => ({
     Editor
   },
   template: html`
-  <editor @load="onLoad" @focus="onFocus" @blur="onBlur" @change="onChange" @stateChange="onStateChange" />`,
+  <editor @load="onLoad" @focus="onFocus" @blur="onBlur" @change="onChange" @stateChange="onStateChange"  @paste="onPaste" />`,
   methods: {
     onLoad: action('onLoad'),
     onFocus: action('onFocus'),
     onBlur: action('onBlur'),
     onChange: action('onChange'),
-    onStateChange: action('onStateChange')
+    onStateChange: action('onStateChange'),
+    onPaste: action('onPaste')
   }
 }));
 

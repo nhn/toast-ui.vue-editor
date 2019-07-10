@@ -238,6 +238,7 @@ export default {
 * stateChange : It would be emitted when format change by cursor position
 * focus : It would be emitted when editor get focus
 * blur : It would be emitted when editor loose focus
+* paste : It would be emitted when something gets pasted
 
 Example :
 
@@ -249,6 +250,7 @@ Example :
     @blur="onEditorBlur"
     @change="onEditorChange"
     @stateChange="onEditorStateChange"
+    @paste="onEditorPaste"
     />
 </template>
 <script>
@@ -272,6 +274,9 @@ export default {
             // implement your code
         },
         onEditorStateChange() {
+            // implement your code
+        },
+        onEditorPaste() {
             // implement your code
         },
     }
@@ -428,6 +433,7 @@ Example :
     @blur="onEditorBlur"
     @change="onEditorChange"
     @stateChange="onEditorStateChange"
+    @paste="onEditorPaste"
     />
 </template>
 
@@ -452,6 +458,9 @@ export default {
             // implement your code
         },
         onEditorStateChange() {
+            // implement your code
+        },
+        onEditorPaste() {
             // implement your code
         },
     }
