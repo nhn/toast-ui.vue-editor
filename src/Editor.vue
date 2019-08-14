@@ -54,7 +54,7 @@ export default {
     },
     value(newValue, preValue) {
       if (newValue !== preValue && newValue !== this.editor.getValue()) {
-        this.editor.setValue(newValue);
+        this.editor.setValue(newValue, false);
       }
     },
     height(newValue) {
