@@ -91,8 +91,6 @@ export default {
     this.editor = new Editor(options);
     if (this.$listeners.input) {
       this.editor.on('change', () => {
-          console.log(this.editor)
-          console.log(this.editor.getCurrentModeEditor().getValue())
         this.$emit('input', this.editor.getCurrentModeEditor().getValue());
       });
     }
