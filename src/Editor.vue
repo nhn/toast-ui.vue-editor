@@ -2,7 +2,7 @@
   <div ref="tuiEditor"></div>
 </template>
 <script>
-import Editor from 'tui-editor';
+import Editor from '@toast-ui/editor';
 import editorEvents from './editorEvents';
 import valueUpdateMethod from './valueUpdateMethod';
 
@@ -53,8 +53,8 @@ export default {
       this.editor.changePreviewStyle(newValue);
     },
     value(newValue, preValue) {
-      if (newValue !== preValue && newValue !== this.editor.getValue()) {
-        this.editor.setValue(newValue);
+      if (newValue !== preValue && newValue !== this.editor.getCurrentModeEditor().getValue()) {
+        this.editor.getCurrentModeEditor().setValue(newValue);
       }
     },
     height(newValue) {
@@ -65,7 +65,7 @@ export default {
     },
     html(newValue) {
       this.editor.setHtml(newValue);
-      this.$emit('input', this.editor.getValue());
+      this.$emit('input', this.editor.getCurrentModeEditor().getValue());
     },
     visible(newValue) {
       if (newValue) {
@@ -91,7 +91,9 @@ export default {
     this.editor = new Editor(options);
     if (this.$listeners.input) {
       this.editor.on('change', () => {
-        this.$emit('input', this.editor.getValue());
+          console.log(this.editor)
+          console.log(this.editor.getCurrentModeEditor().getValue())
+        this.$emit('input', this.editor.getCurrentModeEditor().getValue());
       });
     }
   },
@@ -107,7 +109,7 @@ export default {
       if (this.editor[methodName]) {
         result = this.editor[methodName](...args);
         if (valueUpdateMethod.indexOf(methodName) > -1) {
-          this.$emit('input', this.editor.getValue());
+          this.$emit('input', this.editor.getCurrentModeEditor().getValue());
         }
       }
 
