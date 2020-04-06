@@ -1,3 +1,9 @@
+# ⚠️Notice: This repository is deprecated️️️️️
+
+TOAST UI Editor Vue Wrapper has been managed separately from the TOAST UI Editor repository. As a result of the distribution of these issues, we decided to deprecated each wrapper repository and manage repository as a [mono-repo](https://en.wikipedia.org/wiki/Monorepo) from the [TOAST UI Editor repository](https://github.com/nhn/tui.editor).
+
+From now on, please submit issues or contributings related to TOAST UI React Wrapper to [TOAST UI Editor repository](https://github.com/nhn/tui.editor). Thank you🙂.
+
 # TOAST UI Editor for Vue
 
 > This is Vue component wrapping [TOAST UI Editor](https://github.com/nhn/tui.editor).
