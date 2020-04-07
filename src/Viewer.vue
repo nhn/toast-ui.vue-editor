@@ -2,7 +2,7 @@
   <div ref="tuiEditorViewer"></div>
 </template>
 <script>
-import Editor from 'tui-editor';
+import Editor from '@toast-ui/editor';
 
 import editorEvents from './editorEvents';
 
@@ -27,7 +27,7 @@ export default {
   watch: {
     value(val, preVal) {
       if (val !== preVal) {
-        this.editor.setValue(val);
+        this.editor.getCurrentModeEditor().setValue(val);
       }
     }
   },
