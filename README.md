@@ -168,7 +168,7 @@ export default {
 | previewStyle | String | 'tab' | This prop can change preview style of the editor. (`tab` or `vertical`) |
 | mode | String | 'markdown' | This prop can change mode of the editor. (`markdown`or `wysiwyg`) |
 | html | String | - | If you want to change content of the editor using html format, use this prop. |
-| visible | Boolean | true | This prop can control visible of the eiditor. |
+| visible | Boolean | true | This prop can control visible of the editor. |
 
 ```js
 const defaultOptions = {
