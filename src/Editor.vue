@@ -30,6 +30,9 @@ export default {
     visible: {
       type: Boolean,
       default: true
+    },
+    exts: {
+      type: Array
     }
   },
   data() {
@@ -44,6 +47,7 @@ export default {
       options.initialEditType = this.mode;
       options.height = this.height;
       options.previewStyle = this.previewStyle;
+      options.exts = this.exts;
 
       return options;
     }
